@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>
+        Products | Master’s Safety Solutions
+    </title>
+
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #fff;
+            color: #111;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1300px;
+            margin: auto;
+        }
+
+        .topbar {
+            background: #111;
+            color: #fff;
+            padding: 12px 0;
+            font-size: 14px;
+        }
+
+        .topbar-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .navbar {
+            background: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            color: #d60000;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #111;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links .active {
+            color: #d60000;
+        }
+
+        .page-banner {
+            min-height: 45vh;
+
+            background:
+                linear-gradient(rgba(0,0,0,0.72), rgba(0,0,0,0.72)),
+                url('img/carousel-1.jpg');
+
+            background-size: cover;
+            background-position: center;
+
+            display: flex;
+            align-items: center;
+
+            color: white;
+        }
+
+        .page-banner h1 {
+            font-size: 68px;
+            margin-bottom: 15px;
+        }
+
+        .page-banner p {
+            color: #ddd;
+            font-size: 18px;
+        }
+
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .section-title h2 {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: #666;
+            max-width: 750px;
+            margin: auto;
+            line-height: 1.8;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+            transition: 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+        }
+
+        .product-content {
+            padding: 35px;
+        }
+
+        .product-content h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .product-content p {
+            color: #666;
+            line-height: 1.9;
+        }
+
+        .features-section {
+            background: #111;
+            color: white;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .feature-card i {
+            font-size: 42px;
+            color: #ff3c3c;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            color: #ccc;
+            line-height: 1.8;
+        }
+
+        .rental-section {
+            background: #f8f8f8;
+        }
+
+        .rental-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 60px;
+            align-items: center;
+        }
+
+        .rental-image img {
+            width: 100%;
+            border-radius: 12px;
+        }
+
+        .rental-content h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .rental-content p {
+            color: #666;
+            line-height: 1.9;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 16px 34px;
+            background: #d60000;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #b80000;
+        }
+
+        .cta-section {
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 52px;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            max-width: 750px;
+            margin: auto;
+            color: #666;
+            line-height: 1.9;
+            margin-bottom: 35px;
+        }
+
+        footer {
+            background: #000;
+            color: white;
+            text-align: center;
+            padding: 35px 0;
+        }
+
+        @media(max-width:768px) {
+
+            .page-banner h1,
+            .section-title h2,
+            .rental-content h2,
+            .cta-section h2 {
+                font-size: 38px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .topbar-content {
+                flex-direction: column;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- TOPBAR -->
+
+    <div class="topbar">
+
+        <div class="container topbar-content">
+
+            <div>
+                <i class="fa fa-location-dot"></i>
+                Bangalore, Karnataka
+            </div>
+
+            <div>
+                <i class="fa fa-phone"></i>
+                9986671116 / 6360499797
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar">
+
+        <div class="container nav-content">
+
+            <div class="logo">
+                MASTER'S SAFETY SOLUTIONS
+            </div>
+
+            <div class="nav-links">
+
+                <a href="index.html">Home</a>
+
+                <a href="about.html">About</a>
+
+                <a href="service.html">Services</a>
+
+                <a href="products.html" class="active">Products</a>
+
+                <a href="contact.html">Contact</a>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+    <!-- HERO -->
+
+    <section class="page-banner">
+
+        <div class="container">
+
+            <h1>
+                Our Products
+            </h1>
+
+            <p>
+                Premium Industrial Access & Safety Equipment
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- INTRO -->
+
+    <section class="section">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <h2>
+                    Industrial Access Solutions Built For Safety & Performance
+                </h2>
+
+                <p>
+                    Master’s Safety Solutions offers a wide range of industrial ladders,
+                    scaffolding systems, access platforms, and rental equipment designed
+                    for construction, maintenance, warehouse, and industrial applications.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- PRODUCTS -->
+
+    <section class="section" style="padding-top:0;">
+
+        <div class="container">
+
+            <div class="products-grid">
+
+                <div class="product-card">
+
+                    <img src="img/portfolio-1.jpg" alt="">
+
+                    <div class="product-content">
+
+                        <h3>
+                            Aluminum Scaffolding
+                        </h3>
+
+                        <p>
+                            Lightweight and corrosion-resistant mobile scaffolding systems for industrial and construction use.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="product-card">
+
+                    <img src="img/portfolio-2.jpg" alt="">
+
+                    <div class="product-content">
+
+                        <h3>
+                            A-Type Ladders
+                        </h3>
+
+                        <p>
+                            Portable and durable ladder systems ideal for maintenance and industrial operations.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="product-card">
+
+                    <img src="img/portfolio-3.jpg" alt="">
+
+                    <div class="product-content">
+
+                        <h3>
+                            FRP Fiberglass Ladders
+                        </h3>
+
+                        <p>
+                            Non-conductive ladders designed for electrical maintenance and industrial safety.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="product-card">
+
+                    <img src="img/portfolio-4.jpg" alt="">
+
+                    <div class="product-content">
+
+                        <h3>
+                            Platform Ladders
+                        </h3>
+
+                        <p>
+                            Heavy-duty platform ladders with stable support and safety rails for industrial work.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="product-card">
+
+                    <img src="img/portfolio-5.jpg" alt="">
+
+                    <div class="product-content">
+
+                        <h3>
+                            Airport Ladders
+                        </h3>
+
+                        <p>
+                            Specialized mobile ladder systems designed for airport and aviation maintenance applications.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="product-card">
+
+                    <img src="img/portfolio-6.jpg" alt="">
+
+                    <div class="product-content">
+
+                        <h3>
+                            Mobile Scaffolding Towers
+                        </h3>
+
+                        <p>
+                            Strong and reliable tower systems suitable for elevated industrial access operations.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- FEATURES -->
+
+    <section class="section features-section">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <h2>
+                    Product Features
+                </h2>
+
+                <p>
+                    High-quality industrial equipment designed for safety, reliability, and operational efficiency.
+                </p>
+
+            </div>
+
+            <div class="features-grid">
+
+                <div class="feature-card">
+
+                    <i class="fa fa-feather"></i>
+
+                    <h3>
+                        Lightweight Design
+                    </h3>
+
+                    <p>
+                        Easy-to-handle systems designed for efficient transportation and setup.
+                    </p>
+
+                </div>
+
+                <div class="feature-card">
+
+                    <i class="fa fa-shield-halved"></i>
+
+                    <h3>
+                        Safety Standards
+                    </h3>
+
+                    <p>
+                        Built for stable and secure industrial access operations.
+                    </p>
+
+                </div>
+
+                <div class="feature-card">
+
+                    <i class="fa fa-bolt"></i>
+
+                    <h3>
+                        Electrical Safety
+                    </h3>
+
+                    <p>
+                        FRP fiberglass ladders designed for electrical maintenance work.
+                    </p>
+
+                </div>
+
+                <div class="feature-card">
+
+                    <i class="fa fa-industry"></i>
+
+                    <h3>
+                        Industrial Grade
+                    </h3>
+
+                    <p>
+                        Durable and corrosion-resistant materials for long-term performance.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- RENTALS -->
+
+    <section class="section rental-section">
+
+        <div class="container rental-wrapper">
+
+            <div class="rental-content">
+
+                <h2>
+                    Flexible Rental Availability
+                </h2>
+
+                <p>
+                    Master’s Safety Solutions provides flexible scaffolding and ladder rental services for temporary industrial and construction projects.
+                </p>
+
+                <p>
+                    Our rental solutions are ideal for maintenance operations, warehouse projects, airport maintenance, and commercial construction requirements.
+                </p>
+
+                <p>
+                    Fast delivery support and reliable customer assistance ensure uninterrupted project operations.
+                </p>
+
+                <a href="contact.html" class="btn">
+                    Request Rental Support
+                </a>
+
+            </div>
+
+            <div class="rental-image">
+
+                <img src="img/about.jpg" alt="">
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- CTA -->
+
+    <section class="section cta-section">
+
+        <div class="container">
+
+            <h2>
+                Need The Right Access Equipment?
+            </h2>
+
+            <p>
+                Contact Master’s Safety Solutions for premium industrial ladders,
+                scaffolding systems, and reliable rental support.
+            </p>
+
+            <a href="contact.html" class="btn">
+                Contact Us
+            </a>
+
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div class="container">
+
+            © 2026 Master’s Safety Solutions. All Rights Reserved.
+
+        </div>
+
+    </footer>
+
+</body>
+
+</html>
+```

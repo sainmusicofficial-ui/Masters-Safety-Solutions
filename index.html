@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Master’s Safety Solutions</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #ffffff;
+            color: #111;
+            overflow-x: hidden;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1300px;
+            margin: auto;
+        }
+
+        .topbar {
+            background: #111;
+            color: #fff;
+            padding: 12px 0;
+            font-size: 14px;
+        }
+
+        .topbar-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .navbar {
+            background: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            color: #d60000;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .menu-toggle { 
+            display: none; 
+            font-size: 28px; 
+            cursor: pointer; 
+            color: #111; } 
+        
+        @media(max-width:768px) { 
+            
+            .menu-toggle { 
+                display: block; } 
+            
+            .nav-links { 
+                position: absolute; 
+                top: 100%; 
+                left: 0; 
+                width: 100%; 
+                background: white; 
+                flex-direction: column; 
+                padding: 20px; 
+                display: none; 
+                box-shadow: 0 10px 20px rgba(0,0,0,0.08); } 
+                
+                .nav-links.active { 
+                    display: flex; } }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #111;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #d60000;
+        }
+
+        .hero {
+            min-height: 85vh;
+            background:
+                linear-gradient(rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.72)),
+                url('img/carousel-1.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 760px;
+        }
+
+        .hero-tag {
+            color: #ff3c3c;
+            font-weight: 600;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-size: 68px;
+            line-height: 1.1;
+            margin-bottom: 25px;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 35px;
+            color: #ddd;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 16px 34px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #d60000;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #b80000;
+        }
+
+        .btn-secondary {
+            border: 2px solid white;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: black;
+        }
+
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .section-title h2 {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: auto;
+            line-height: 1.8;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-box {
+            background: #f8f8f8;
+            padding: 40px 30px;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-box i {
+            font-size: 45px;
+            color: #d60000;
+            margin-bottom: 25px;
+        }
+
+        .feature-box h3 {
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+
+        .feature-box p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .about {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about img {
+            width: 100%;
+            border-radius: 12px;
+        }
+
+        .about-text h2 {
+            font-size: 48px;
+            margin-bottom: 25px;
+        }
+
+        .about-text p {
+            color: #666;
+            line-height: 1.9;
+            margin-bottom: 20px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            transition: 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-card img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+        }
+
+        .service-content {
+            padding: 30px;
+        }
+
+        .service-content h3 {
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+
+        .service-content p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .why-us {
+            background: #111;
+            color: white;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .why-card {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 35px;
+            border-radius: 10px;
+        }
+
+        .why-card i {
+            color: #ff2d2d;
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .why-card h3 {
+            margin-bottom: 15px;
+        }
+
+        .why-card p {
+            color: #ccc;
+            line-height: 1.8;
+        }
+
+        .cta-section {
+            text-align: center;
+            background: #f8f8f8;
+        }
+
+        .cta-section h2 {
+            font-size: 52px;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            max-width: 750px;
+            margin: auto;
+            color: #666;
+            line-height: 1.9;
+            margin-bottom: 35px;
+        }
+
+        footer {
+            background: #000;
+            color: white;
+            text-align: center;
+            padding: 35px 0;
+        }
+
+        .floating-whatsapp {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            background: #25d366;
+            bottom: 30px;
+            right: 30px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 28px;
+            text-decoration: none;
+            z-index: 999;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        @media(max-width: 768px) {
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .section-title h2,
+            .about-text h2,
+            .cta-section h2 {
+                font-size: 34px;
+            }
+
+            .topbar-content {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- TOPBAR -->
+
+    <div class="topbar">
+        <div class="container topbar-content">
+
+            <div>
+                <i class="fa fa-location-dot"></i>
+                Bangalore, Karnataka
+            </div>
+
+            <div>
+                <i class="fa fa-phone"></i>
+                9986671116 / 6360499797
+            </div>
+
+        </div>
+    </div>
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar">
+
+        <div class="container nav-content">
+
+            <div class="logo">
+                MASTER'S SAFETY SOLUTIONS
+            </div>
+
+            <div class="menu-toggle" id="menu-toggle"> <i class="fa fa-bars"></i> </div>
+
+            <div class="nav-links" id="nav-links">
+
+                <a href="index.html">Home</a>
+
+                <a href="about.html">About</a>
+
+                <a href="service.html">Services</a>
+
+                <a href="products.html">Products</a>
+
+                <a href="contact.html">Contact</a>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="container hero-content">
+
+            <div class="hero-tag">
+                Safety At Height, Reliability At Every Step
+            </div>
+
+            <h1>
+                Premium Scaffolding Systems & Industrial Ladders
+            </h1>
+
+            <p>
+                Master’s Safety Solutions delivers high-quality scaffolding systems,
+                industrial ladders, rental services, and access equipment designed
+                for construction, maintenance, warehouse, and industrial applications.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="products.html" class="btn btn-primary">
+                    Explore Products
+                </a>
+
+                <a href="contact.html" class="btn btn-secondary">
+                    Get Quote
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- FEATURES -->
+
+    <section class="section">
+
+        <div class="container">
+
+            <div class="features">
+
+                <div class="feature-box">
+
+                    <i class="fa fa-shield-halved"></i>
+
+                    <h3>Safety Standards</h3>
+
+                    <p>
+                        Designed to meet industrial safety requirements with reliable and stable access systems.
+                    </p>
+
+                </div>
+
+                <div class="feature-box">
+
+                    <i class="fa fa-industry"></i>
+
+                    <h3>Industrial Grade</h3>
+
+                    <p>
+                        Durable aluminum and FRP equipment built for long-term industrial performance.
+                    </p>
+
+                </div>
+
+                <div class="feature-box">
+
+                    <i class="fa fa-truck-fast"></i>
+
+                    <h3>Fast Delivery</h3>
+
+                    <p>
+                        Safe and reliable transportation with delivery available within 4 hours.
+                    </p>
+
+                </div>
+
+                <div class="feature-box">
+
+                    <i class="fa fa-headset"></i>
+
+                    <h3>Reliable Support</h3>
+
+                    <p>
+                        Professional customer support for rentals, sales, and industrial requirements.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ABOUT PREVIEW -->
+
+    <section class="section">
+
+        <div class="container about">
+
+            <img src="img/about.jpg" alt="">
+
+            <div class="about-text">
+
+                <h2>
+                    Trusted Industrial Access Solutions
+                </h2>
+
+                <p>
+                    Master’s Safety Solutions is a trusted provider of scaffolding systems and ladder solutions
+                    designed for construction, maintenance, industrial, and commercial projects.
+                </p>
+
+                <p>
+                    We specialize in safe, durable, and efficient access equipment with a strong commitment
+                    to safety, reliability, and long-term industrial performance.
+                </p>
+
+                <a href="about.html" class="btn btn-primary">
+                    Read More
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- FEATURED PRODUCTS -->
+
+    <section class="section">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <h2>Featured Products</h2>
+
+                <p>
+                    Safe, durable, and efficient industrial access solutions designed for modern projects.
+                </p>
+
+            </div>
+
+            <div class="services-grid">
+
+                <div class="service-card">
+
+                    <img src="img/service-1.jpg" alt="">
+
+                    <div class="service-content">
+
+                        <h3>Aluminum Scaffolding</h3>
+
+                        <p>
+                            Lightweight and corrosion-resistant mobile scaffolding systems for industrial and construction use.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="service-card">
+
+                    <img src="img/service-2.jpg" alt="">
+
+                    <div class="service-content">
+
+                        <h3>A-Type Ladders</h3>
+
+                        <p>
+                            Portable, foldable, and durable ladder systems ideal for maintenance and industrial work.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="service-card">
+
+                    <img src="img/service-3.jpg" alt="">
+
+                    <div class="service-content">
+
+                        <h3>FRP Fiberglass Ladders</h3>
+
+                        <p>
+                            Non-conductive ladders designed for electrical maintenance and industrial safety.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- WHY CHOOSE US -->
+
+    <section class="section why-us">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <h2>Why Choose Us</h2>
+
+                <p>
+                    Trusted industrial access solutions focused on safety, quality, and performance.
+                </p>
+
+            </div>
+
+            <div class="why-grid">
+
+                <div class="why-card">
+
+                    <i class="fa fa-check"></i>
+
+                    <h3>High Safety Standards</h3>
+
+                    <p>
+                        Built with worker safety and industrial compliance in mind.
+                    </p>
+
+                </div>
+
+                <div class="why-card">
+
+                    <i class="fa fa-bolt"></i>
+
+                    <h3>Electrical Safety</h3>
+
+                    <p>
+                        FRP ladders designed specifically for electrical maintenance applications.
+                    </p>
+
+                </div>
+
+                <div class="why-card">
+
+                    <i class="fa fa-gears"></i>
+
+                    <h3>Durable Equipment</h3>
+
+                    <p>
+                        Strong, lightweight, and corrosion-resistant industrial access systems.
+                    </p>
+
+                </div>
+
+                <div class="why-card">
+
+                    <i class="fa fa-clock"></i>
+
+                    <h3>Quick Delivery</h3>
+
+                    <p>
+                        Fast delivery support to keep your projects running efficiently.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- CTA SECTION -->
+
+    <section class="section cta-section">
+
+        <div class="container">
+
+            <h2>
+                Need Reliable Industrial Access Solutions?
+            </h2>
+
+            <p>
+                Contact Master’s Safety Solutions today for scaffolding rentals,
+                ladder systems, and industrial safety equipment.
+            </p>
+
+            <a href="contact.html" class="btn btn-primary">
+                Request A Quote
+            </a>
+
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div class="container">
+
+            © 2026 Master’s Safety Solutions. All Rights Reserved.
+
+        </div>
+
+    </footer>
+
+    <!-- WHATSAPP -->
+
+    <a href="https://wa.me/919986671116" class="floating-whatsapp">
+
+        <i class="fab fa-whatsapp"></i>
+
+    </a>
+
+<script>
+
+const menuToggle = document.getElementById('menu-toggle');
+const navLinks = document.getElementById('nav-links');
+
+menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+});
+
+</script>
+
+
+
+</body>
+
+</html>
+
