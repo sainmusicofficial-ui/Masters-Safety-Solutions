@@ -118,15 +118,38 @@
         }
 
         .hero {
+            position: relative;
             min-height: 85vh;
-            background:
-                linear-gradient(rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.72)),
-                url('img/carousel-1.jpg');
-            background-size: cover;
-            background-position: center;
             display: flex;
             align-items: center;
             color: white;
+            overflow: hidden;
+        }
+
+        .hero-slide {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            z-index: 0;
+        }
+
+        .hero-slide::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.72);
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
         }
 
         .hero-content {
@@ -475,6 +498,10 @@
 
     <section class="hero">
 
+        <div class="hero-slide active" style="background-image: url('img/carousel-1.jpg');"></div>
+        <div class="hero-slide" style="background-image: url('img/carousel-2.jpg');"></div>
+        <div class="hero-slide" style="background-image: url('img/carousel-3.jpg');"></div>
+
         <div class="container hero-content">
 
             <div class="hero-tag">
@@ -798,6 +825,17 @@ const navLinks = document.getElementById('nav-links');
 menuToggle.addEventListener('click', () => {
     navLinks.classList.toggle('active');
 });
+
+// Hero auto-slide
+const heroSlides = document.querySelectorAll('.hero-slide');
+let heroIndex = 0;
+if (heroSlides.length > 1) {
+    setInterval(() => {
+        heroSlides[heroIndex].classList.remove('active');
+        heroIndex = (heroIndex + 1) % heroSlides.length;
+        heroSlides[heroIndex].classList.add('active');
+    }, 5000);
+}
 
 </script>
 
