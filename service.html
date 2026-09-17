@@ -300,6 +300,25 @@
                 flex-direction: column;
             }
         }
+
+        .reveal-init {
+            opacity: 0;
+            transform: translateY(35px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal-init.reveal-visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .reveal-init {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+        }
     </style>
 
 </head>
@@ -736,6 +755,8 @@
         </div>
 
     </footer>
+
+    <script src="js/scroll-reveal.js"></script>
 
 </body>
 
